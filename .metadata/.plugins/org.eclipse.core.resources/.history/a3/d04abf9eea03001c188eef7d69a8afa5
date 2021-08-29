@@ -1,0 +1,30 @@
+package chatting_programming;
+
+import java.util.Scanner;
+
+import com.framework.TcpApplication;
+
+public class TcpServer {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		showMenu();
+		
+		/* TCP/IP 어플리케이션 생성 */
+		TcpApplication app = new AppServer();
+		
+		// 설정 초기화
+//		app.init();
+		
+		//어플리케이션 실행
+//		app.start();
+		
+	}
+
+	private static void showMenu() {
+		System.out.printf("                                         \n");
+		System.out.printf("       ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ \n");
+		System.out.printf("                                         \n");
+		
+	}
+}

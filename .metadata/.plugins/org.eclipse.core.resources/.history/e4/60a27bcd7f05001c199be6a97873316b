@@ -1,0 +1,114 @@
+package mafia_TimeTrack;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+/**************************************************************
+ * Class timer indicates user that they have 5minutes to chat each other
+ * 수업 타이머는 사용자에게 서로 채팅할 수 있는 5분의 시간이 있음을 나타냅니다.
+ * timer class tells time to user with a seperate frame with JLabel
+ * timer 클래스는 JLabel을 사용하여 별도의 프레임으로 사용자에게 시간을 알려줍니다.
+ * if the timer is finished it sends protocol to server that timeout happened
+ * 타이머가 완료되면 시간 초과가 발생한 서버에 프로토콜을 보냅니다.
+ * 
+ **************************************************************/
+class SecondThread extends Thread
+
+{
+	int y = 90;
+	JLabel myLabel = null;
+	private boolean stopMe = false;
+	private Object monitorObj = null;
+
+	public SecondThread(JLabel myLabel, Object _monitorObj) {
+
+		this.myLabel = myLabel;
+		monitorObj = _monitorObj;
+	}
+	/*
+	 * method run decrease y value 1 after 1 second elapsed
+	 * 메소드 실행 1초 후 y값 1 감소.
+	 * 
+	 */
+	public void run() 
+
+	{
+		while (true)
+
+		{
+
+			myLabel.setText("" + y); // 토론에 남은 시간을 표시하려면 레이블에 y 값을 추가하십시오.
+			try {
+
+				Thread.sleep(1000); // 스레드를 1초까지 절전 모드로 전환
+
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+
+			if (stopMe == false) {
+				y--;
+			} else {
+				synchronized (monitorObj) {
+					try {
+						monitorObj.wait();
+
+					} catch (InterruptedException e) {
+
+						
+						e.printStackTrace();
+					}
+				}
+			}
+			if (y == -1) { // 타이머가 0초가 되면 클라이언트 소켓이 서버로 전송 시간 초과 프로토콜
+				Send_socket.out.println("/timeout"); // 서버에 메시지 보내기
+				this.interrupt(); //interrupt thread
+				break;
+				
+			}
+		}
+		
+	}
+}
+/*
+ * GUI for timer
+ */
+public class Timer_start extends JFrame implements Runnable {
+
+	static JLabel timerLabel = null;
+	JLabel secondLabel = null;
+	JButton stopbutton = null;
+	SecondThread secondThread = null;
+	Object monitorObj = new Object();
+
+	public void TimerStart()
+
+	{
+		this.setTitle("Timer Test"); // title for timer frame
+		
+		
+		
+		Container c = this.getContentPane(); // frame for timer
+		c.setLayout(new FlowLayout());
+		secondLabel = new JLabel("0"); // timer label
+		secondLabel.setFont(new Font("Gothic", Font.ITALIC, 80));
+		c.add(secondLabel);
+		this.setSize(300, 150);
+		this.setVisible(true);
+		
+		secondThread = new SecondThread(secondLabel,monitorObj);
+		secondThread.start();
+		while(!secondThread.interrupted()){ // interrupt timer thread when the time becomes 0 and close timer Frame
+			if(secondThread.getTime() == -1)
+				break;
+		}
+		this.setVisible(false);
+	}
+
+	public void run() {
+		this.TimerStart(); // thread for timer
+	}
+
+}

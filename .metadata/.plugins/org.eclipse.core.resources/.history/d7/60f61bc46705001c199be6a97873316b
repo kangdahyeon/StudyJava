@@ -1,0 +1,18 @@
+package frame_Example;
+
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
+public class Frame {
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		
+		frame.setVisible(true);		// 창 나오게 하는것. 
+		frame.setPreferredSize(new Dimension(840, (840/12 *9)));	// 사이즈 정해주고, Dimension 은 가로세로
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	// 프로그램을 끄면 모든게 종료되게 
+		
+		
+	}
+}

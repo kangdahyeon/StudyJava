@@ -1,0 +1,10 @@
+package ftp_programming;
+
+public class FTPServer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

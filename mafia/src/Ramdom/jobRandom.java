@@ -1,0 +1,19 @@
+package Ramdom;
+
+import java.util.Random;
+
+public class jobRandom {
+	public String getRandTestString(){
+		 
+	     String RandomNames[] = { "¸¶ÇÇ¾Æ","½Ã¹Î","°æÂû","ÀÇ»ç","½Ã¹Î" };
+	 
+	 
+	    Random oRandom = new Random();
+	    int randNum = oRandom.nextInt(RandomNames.length);     
+	 
+	    //Boolean rand_true_false = oRandom.nextBoolean(); //( ·£´ıÀ¸·Î Âü °ÅÁşÀ» »Ì¾Æ³¿ )
+	    
+	 
+	    return RandomNames[randNum];
+	}
+}

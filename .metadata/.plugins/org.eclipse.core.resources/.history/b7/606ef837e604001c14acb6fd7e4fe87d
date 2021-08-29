@@ -1,0 +1,39 @@
+package mafia_TimeTrack;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class DayCountExample2 { 
+	
+	int day = 5;
+	Timer timer = new Timer();
+	TimerTask task = new TimerTask() {
+
+		@Override
+		public void run() {
+			System.out.println(TcpApplication.timeStamp());
+			
+			for(int i = 0; i < 5; i++) {
+				try {
+					System.out.println("밤이 되었습니다.");
+					
+					Thread.sleep(60000);
+					day--;
+				
+					System.out.println("남은 일수는 " + day + "일 입니다.");
+					System.out.println(TcpApplication.timeStamp());
+					
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+				} finally {
+					timer.cancel();
+					System.out.println("아침이 되었습니다.");
+				}
+			}
+		}
+	};	
+	public void start() {
+		timer.schedule(task, 5000);
+	}
+}

@@ -1,0 +1,7 @@
+package ftp_programming;
+
+public class FTPClient {
+	public static void main(String[] args) {
+		
+	}
+}

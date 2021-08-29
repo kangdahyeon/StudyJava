@@ -1,0 +1,27 @@
+package ftp_programming;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.util.Scanner;
+
+public class FTPClient {
+	
+	public static final String IP = "localhost";
+//	public static final String IP = "127.0.0.1";
+	public static final int PORT = 6930;
+	
+	public static void main(String[] args) {
+		System.out.println();
+		// 입출력 스트림
+		InputStream in = null;
+		OutputStream out = null;
+		DataInputStream din = null;
+		DataOutputStream dout = null;
+		
+		Scanner sc = new Scanner(System.in);
+		
+	}
+}

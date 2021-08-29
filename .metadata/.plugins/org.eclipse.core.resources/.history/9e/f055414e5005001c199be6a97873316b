@@ -1,0 +1,14 @@
+package mafia_TimeTrack;
+
+import javax.swing.JFrame;
+
+public class JFramTest extends JFrame {
+	
+	public JFramTest() {
+		super("남은 시간");
+		setSize(350, 100);
+		setVisible(true);
+	}
+	
+
+}

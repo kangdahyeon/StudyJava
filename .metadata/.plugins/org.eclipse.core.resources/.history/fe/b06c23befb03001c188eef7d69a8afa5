@@ -1,0 +1,11 @@
+package chatting_programming;
+
+public class TcpClientHandler implements Runnable {
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

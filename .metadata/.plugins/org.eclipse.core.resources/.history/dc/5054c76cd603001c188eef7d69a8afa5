@@ -1,0 +1,53 @@
+package ftp_programming;
+
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class FileServer {
+	
+	public static final int PORT = 5349;
+	
+	public static void main(String[] args) {
+		ServerSocket server;
+		System.out.println("클라이언트 접속 대기중");
+		try {
+			server = new ServerSocket(PORT);
+			Socket client = server.accept();
+			System.out.println(client.getInetAddress().getHostName() + " 님이 접속하셨습니다.");
+			OutputStream out = client.getOutputStream();
+			OutputStreamWriter outw = new OutputStreamWriter(out);
+			PrintWriter pw = new PrintWriter(outw);
+			
+			FileInputStream fin = null;
+			DataOutputStream dout = new DataOutputStream(out);
+			
+			/** 리소스 자동 배포 */
+			File resce = new File("Resources\\");
+			System.out.println(resce.list().length + " 개의 파일이 있습니다.");	// 파일 안의 개수 확인
+			String filePath = null;
+			for(String file : resce.list()) {
+				// 파일 정보(이름,크기)얻기.
+				filePath = resce.getName() + "\\" + file;
+				File sendFile = new File(filePath);
+				System.out.println(sendFile.getName() + " 송신 중");
+				
+				// 파일 송신
+				pw.println(sendFile);
+				pw.flush();
+				pw.println(sendFile.length());
+				pw.flush();
+				
+				System.out.println(filePath);	// 파일 이름 출력
+			}
+		} catch(IOException e) {e.printStackTrace();}
+	}
+
+}

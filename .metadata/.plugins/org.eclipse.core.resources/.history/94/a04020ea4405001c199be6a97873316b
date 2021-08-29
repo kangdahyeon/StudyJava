@@ -1,0 +1,17 @@
+package GUIchatting;
+
+import javax.swing.JFrame;
+
+public class TimerTest extends JFrame {
+	
+	Jbutton button;
+	JLabel labelTimer;
+	Timer timerSec = new Timer();
+	
+	public TimerTset() {
+		super("TimerTest");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+
+}

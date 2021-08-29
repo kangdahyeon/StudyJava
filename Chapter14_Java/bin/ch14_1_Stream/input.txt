@@ -1,0 +1,5 @@
+ID=call1212
+eng_name=dahyeon
+kor_name=°­´Ù
+data=1,2,3,4,5
+C:\Users\KDH\Documents\Dev211\Temp

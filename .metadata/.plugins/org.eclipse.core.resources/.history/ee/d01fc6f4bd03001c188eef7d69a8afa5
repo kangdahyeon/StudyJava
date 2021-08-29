@@ -1,0 +1,68 @@
+package ftp_programming;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class FTPClient {
+	
+	public static final String IP = "localhost";
+//	public static final String IP = "127.0.0.1";
+	public static final int PORT = 6930;
+	
+	public static void main(String[] args) {
+		System.out.println();
+		// 입출력 스트림
+		InputStream in = null;
+		OutputStream out = null;
+		DataInputStream din = null;
+		DataOutputStream dout = null;
+		
+		Scanner sc = null;
+		// 소켓
+		Socket socket = null;
+		
+		
+		try {
+			socket = new Socket(IP,PORT);
+			sc = new Scanner(System.in);
+			
+			// 수신
+			in = socket.getInputStream();
+			din = new DataInputStream(in);
+			
+			// 송신
+			out = socket.getOutputStream();
+			dout = new DataOutputStream(out);
+			
+			menuDisplay();
+			
+			
+		} catch(IOException e) {e.printStackTrace();} 
+		finally {
+			try {
+				if(din != null) { din.close();}
+				if(dout != null) { dout.close();}
+				if(clientSocket != null) { clientSocket.close();}
+				if(serverSocket != null) { serverSocket.close();}
+			
+			} catch(IOException e) {e.printStackTrace();}}
+	}
+
+	private static void menuDisplay() {
+		System.out.println();
+		System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+		System.out.println();
+		System.out.println(" 받고 싶은 파일의 이름(파일명.확장자)를 입력해 주세요.");
+		System.out.println();
+		System.out.println(" [1]aaa.txt [2]bbb.txt [3]ccc.txt [4]image.jpg ");
+		System.out.println();
+		System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+		System.out.println();
+		System.out.print("선택 > ");
+	}
+}

@@ -1,0 +1,7 @@
+package mafia_game;
+
+import javax.swing.JPanel;
+
+public class JPanelWithBackground extends JPanel {
+
+}

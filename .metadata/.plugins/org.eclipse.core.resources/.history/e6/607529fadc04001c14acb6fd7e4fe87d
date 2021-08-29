@@ -1,0 +1,9 @@
+package mafia_TimeTrack;
+
+public class TimerMain {
+	public static void main(String[] args) {
+		TimerExample2 time = new TimerExample2();
+		time.m_task.run();
+	}
+
+}

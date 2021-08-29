@@ -1,0 +1,9 @@
+package mafia_TimeTrack;
+
+public class TimerMain {
+	public static void main(String[] args) {
+		
+		DayCountExample dayCount = new DayCountExample();
+		dayCount.start();
+	}
+}

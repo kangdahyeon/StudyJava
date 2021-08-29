@@ -1,0 +1,10 @@
+package frame_Example;
+
+import javax.swing.JFrame;
+
+public class Frame {
+	JFrame frame = new JFrame();
+	
+	
+	
+}

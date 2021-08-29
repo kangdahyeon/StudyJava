@@ -1,0 +1,11 @@
+package GUIchatting;
+
+import GUIchatting.chatServer.ChatServer;
+
+public class chatServerMain {
+		public static void main(String[] args) {
+			ChatServer server = new ChatServer();
+			server.giveAndTake();
+	}
+
+}

@@ -1,0 +1,92 @@
+package mafia_game;
+
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.io.BufferedReader;
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class Timer2 extends JPanel implements Runnable{
+
+   private JLabel label;
+   
+   public Timer2() {
+      //setDefaultCloseOperation(JPanel.EXIT_ON_CLOSE);   // x 누르면 실행도 같이 종료
+      setLayout(new BorderLayout());
+      String time = getCurrentTime();
+      label = new JLabel(time);
+      label.setFont(new Font("TimesRoman", Font.ITALIC, 10)); // 폰트, 글씨크기
+      label.setHorizontalAlignment(JLabel.CENTER); // 가운데 정렬
+      add(label, BorderLayout.CENTER);
+      add(new JButton("현재 시간 :" + time),BorderLayout.SOUTH);
+//      add(new JButton("남은 일 수 :" +dayCount),BorderLayout.NORTH);
+      
+      setSize(300, 200);
+      Thread t1 = new Thread(this);
+      t1.start();
+      
+      setVisible(true);
+   }
+   
+   
+   @Override
+   public void run() {
+      Timer time = new Timer();
+      
+      time.scheduleAtFixedRate(new TimerTask() {
+         public int time = 10;
+         
+            public void run() {
+               
+               label.setText(time + "<html><body style='text-align:center;'>남은시간 <br /></body></html>");
+               time--;
+                
+                if (time < 0) {
+//                    time.cancel();
+                    label.setText("투표 시간이 되었습니다.");
+//                    Button btn = new Button();
+//                    btn.voting();
+
+                    time = 10;
+                }
+            }
+        }, 0, 1000);
+      
+   }
+   
+   public String getCurrentTime() {
+      Calendar c = Calendar.getInstance();
+      int hour = c.get(Calendar.HOUR_OF_DAY);
+      int min = c.get(Calendar.MINUTE);
+      int sec = c.get(Calendar.SECOND);
+      
+      String dayTime = hour+":"+min+":"+sec;
+      return dayTime;
+   }
+   
+   public static void main(String[] args) {
+      new Timer2();
+ 
+   }
+}
+
+
+
+
+// 투표 버튼 생성
+//class Button {
+//
+//   public void voting() {
+//      String[] buttons = {"첫 번째값", "두 번째값", "세 번째값", "네 번째값","다섯번째값"};
+//      int num = JOptionPane.showOptionDialog(null, "죽일 사람을 선택해주세요", "토론 종료",
+//            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttons, "두 번째값");
+//
+//      ClientGui.out.println("/vote " + num);			
+//   }
+//}

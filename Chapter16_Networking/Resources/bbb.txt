@@ -1,0 +1,59 @@
+Socket accept() 
+Listens for a connection to be made to this socket and acceptsit.
+ 
+void bind(SocketAddress endpoint) 
+Binds the ServerSocket to a specific address(IP address and port number).
+ 
+void bind(SocketAddress endpoint,int backlog) 
+Binds the ServerSocket to a specific address(IP address and port number).
+ 
+void close() 
+Closes this socket.
+ 
+ServerSocketChannel getChannel() 
+Returns the unique ServerSocketChannel objectassociated with this socket, if any.
+ 
+InetAddress getInetAddress() 
+Returns the local address of this server socket.
+ 
+int getLocalPort() 
+Returns the port number on which this socket is listening.
+ 
+SocketAddress getLocalSocketAddress() 
+Returns the address of the endpoint this socket is bound to.
+ 
+int getReceiveBufferSize() 
+Gets the value of the SO_RCVBUF optionfor this ServerSocket, that is the proposed buffer size thatwill be used for Sockets accepted from this ServerSocket.
+ 
+boolean getReuseAddress() 
+Tests if SO_REUSEADDR is enabled.
+ 
+int getSoTimeout() 
+Retrieve setting for SO_TIMEOUT.
+ 
+protected void implAccept(Socket s) 
+Subclasses of ServerSocket use this method to override accept()to return their own subclass of socket.
+ 
+boolean isBound() 
+Returns the binding state of the ServerSocket.
+ 
+boolean isClosed() 
+Returns the closed state of the ServerSocket.
+ 
+void setPerformancePreferences(int connectionTime,int latency,int bandwidth) 
+Sets performance preferences for this ServerSocket.
+ 
+void setReceiveBufferSize(int size) 
+Sets a default proposed value for the SO_RCVBUF option for socketsaccepted from this ServerSocket.
+ 
+void setReuseAddress(boolean on) 
+Enable/disable the SO_REUSEADDRsocket option.
+ 
+static void setSocketFactory(SocketImplFactory fac) 
+Sets the server socket implementation factory for theapplication.
+ 
+void setSoTimeout(int timeout) 
+Enable/disable SO_TIMEOUT with thespecified timeout, in milliseconds.
+ 
+String toString() 
+Returns the implementation address and implementation port ofthis socket as a String. 

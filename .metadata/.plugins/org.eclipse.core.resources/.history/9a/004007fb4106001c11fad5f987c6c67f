@@ -1,0 +1,15 @@
+package mafia_game;
+
+import javax.swing.JOptionPane;
+
+public class Button {
+
+   public void voting() {
+      String[] buttons = {"첫 번째값", "두 번째값", "세 번째값", "네 번째값","다섯번째값"};
+      int num = JOptionPane.showOptionDialog(null, "죽일 사람을 선택해주세요", "토론 종료",
+            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttons, "두 번째값");
+
+      ClientGui.out.println("/vote" + num);
+
+   }
+}

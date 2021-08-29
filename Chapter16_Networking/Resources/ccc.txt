@@ -1,0 +1,14 @@
+
+Constructor and Description
+
+ServerSocket() 
+Creates an unbound server socket.
+ 
+ServerSocket(int port) 
+Creates a server socket, bound to the specified port.
+ 
+ServerSocket(int port,int backlog) 
+Creates a server socket and binds it to the specified local portnumber, with the specified backlog.
+ 
+ServerSocket(int port,int backlog, InetAddress bindAddr) 
+Create a server with the specified port, listen backlog, andlocal IP address to bind to. 

@@ -1,0 +1,18 @@
+package chatting_programming;
+
+import com.framework.TcpApplication;
+
+public class AppServer extends TcpApplication {
+	/*어플리케이션 초기화*/
+	@Override
+	public void init() {
+		super.init();
+	}
+	
+	/* 어플 실행 */
+	@Override
+	public void start() {
+		System.out.println(TcpApplication.timeStamp());
+	}
+
+}

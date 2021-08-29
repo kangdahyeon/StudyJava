@@ -1,0 +1,39 @@
+package GUIchatting;
+
+import java.awt.FlowLayout;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class countDown {
+    public static void main(String[] args) {
+
+        JFrame jframe = new JFrame();
+        JLabel jLabel = new JLabel();
+        jframe.setLayout(new FlowLayout());
+        jframe.setBounds(300, 300, 400, 100);
+
+        jframe.add(jLabel);
+        jframe.setVisible(true);
+
+        Timer timer = new Timer();
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int i = 10;
+
+            public void run() {
+            	
+                jLabel.setText("밤이 되었습니다.");
+                jLabel.setText("\n남은시간: " + i);
+                i--;
+
+                if (i < 0) {
+                    timer.cancel();
+                    jLabel.setText("Time Over");
+                }
+            }
+        }, 0, 1000);
+    }
+}

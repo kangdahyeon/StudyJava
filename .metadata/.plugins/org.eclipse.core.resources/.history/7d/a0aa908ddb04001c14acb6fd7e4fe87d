@@ -1,0 +1,32 @@
+package mafia_TimeTrack;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class TimerExample2 extends TimerTask {
+	
+	private static final TimerTask task = null;
+	Timer m_time = null;
+
+	
+
+	@Override
+	public void run() {
+		System.out.println(TcpApplication.timeStamp());
+		int count = 0;
+		int i = 5;
+		if(count < 5) {
+			System.out.println("밤이 되었습니다.");
+			count++; i--;
+			
+			System.out.println("남은 일수는 " + i + "일 입니다.");
+			System.out.println(TcpApplication.timeStamp());
+			
+		} else {
+			m_time.cancel();
+			System.out.println("종료");
+		}
+		m_time.schedule(task, 5000,60000);
+	}
+	
+}

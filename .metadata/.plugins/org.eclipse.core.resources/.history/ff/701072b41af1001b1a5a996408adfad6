@@ -1,0 +1,9 @@
+package ch06_1_oop;
+
+public class FieldInitValueExample {
+	public static void main(String[] args) {
+		FieldInitValue fiv = new FieldInitValue();
+		
+	}
+
+}
